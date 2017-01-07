@@ -3,16 +3,36 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.brown</groupId>
-    <artifactId>Limiter</artifactId>
+    <artifactId>limiter</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
 
     <name>Limiter</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/nasazh/limiter</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <build>
+        <finalName>Limiter</finalName>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>net.brown.Limiter</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

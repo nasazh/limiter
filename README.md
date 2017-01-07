@@ -9,7 +9,7 @@ Comes with a tray icon which can show them how much time is left.
 mvn package
 
 ####To start
-java -jar Limiter-0.1.jar _username_ _time limit_
+java -jar Limiter.jar _username_ _time limit_
 
 Where _username_ is the username of your kid (can be found in C:\Users) and _time limit_ is time limit in minutes.
 

@@ -16,13 +16,24 @@ public class Limiter {
     private static final long MINUTE_IN_MILLIS = 1000 * 60;
 
     public static void main(String[] args) throws Exception {
+        if (args.length == 0 || args.length == 1){
+            System.out.println("Username and/or time limit is not correctly set");
+            return;
+        }
         String userName = System.getProperty("user.name");
         if (!userName.equals(args[0])) {
             return;
         }
-        int allowedTime = Integer.valueOf(args[1]);
+        int allowedTime = 0;
+        try {
+           allowedTime = Integer.valueOf(args[1]);
+        } catch (NumberFormatException e){
+            System.out.println("Time limit is not correctly set");
+            return;
+        }
+
         int usedTime = readUsedTime(userName);
-        Notification notification = new Notification(allowedTime);
+        net.brown.Notification notification = new Notification(allowedTime);
         while (usedTime < allowedTime) {
             Thread.sleep(MINUTE_IN_MILLIS);
             usedTime = incrementUsedTime(userName);
