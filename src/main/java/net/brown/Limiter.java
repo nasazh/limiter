@@ -17,7 +17,7 @@ public class Limiter {
 
     public static void main(String[] args) throws Exception {
         if (args.length == 0 || args.length == 1){
-            System.out.println("Username and/or time limit is not correctly set");
+            System.out.println("Username and/or time limit are not correctly set");
             return;
         }
         String userName = System.getProperty("user.name");
@@ -33,14 +33,14 @@ public class Limiter {
         }
 
         int usedTime = readUsedTime(userName);
-        net.brown.Notification notification = new Notification(allowedTime);
+        Notification notification = new Notification(allowedTime);
         while (usedTime < allowedTime) {
             Thread.sleep(MINUTE_IN_MILLIS);
             usedTime = incrementUsedTime(userName);
             int remainingTime = allowedTime - usedTime;
             notification.setRemainingTime(remainingTime);
-
         }
+
         notification.removeTrayIcon();
         shutdown();
     }
